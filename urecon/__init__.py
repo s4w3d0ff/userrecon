@@ -1,4 +1,5 @@
 from requests import Session
+from bs4 import BeautifulSoup
 
 _s = Session()
 
