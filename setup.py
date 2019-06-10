@@ -6,7 +6,7 @@ read_md = lambda f: open(f, 'r').read()
 
 setup(name='urecon',
       version='0.1.1',
-      description='Find usernames across over 75 social networks',
+      description='Find usernames across over 70 social networks',
       long_description=read_md('README.md'),
       long_description_content_type='text/markdown',
       url='https://github.com/s4w3d0ff/userrecon',
