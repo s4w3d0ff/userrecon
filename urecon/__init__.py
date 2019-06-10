@@ -134,6 +134,7 @@ REGEX = {
     'ebay': "The User ID you entered was not found.",
     'mixcloud': "Page Not Found",
     'steam': "The specified profile could not be found",
+    'ifttt': "The requested page or file does not exist."
 }
 
 
