@@ -1,0 +1,7 @@
+#!/usr/bin/python
+# -*- coding: utf-8 -*-
+import urecon
+import sys
+import pprint
+username = sys.argv[1]
+pprint.pprint(get(username))

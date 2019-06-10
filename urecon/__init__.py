@@ -118,9 +118,3 @@ def get(username, ignore=[]):
 
     print(results)
     return results
-
-
-if __name__ == '__main__':
-    import sys
-    username = sys.argv[1]
-    get(username)
