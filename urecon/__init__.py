@@ -6,6 +6,44 @@ import logging
 logger = logging.getLogger(__name__)
 _s = Session()
 
+# console colors ---------------------------------------------------------
+WT = '\033[0m'  # white (normal)
+
+
+def RD(text):
+    """ Red """
+    return '\033[31m%s%s' % (str(text), WT)
+
+
+def GR(text):
+    """ Green """
+    return '\033[32m%s%s' % (str(text), WT)
+
+
+def OR(text):
+    """ Orange """
+    return '\033[33m%s%s' % (str(text), WT)
+
+
+def BL(text):
+    """ Blue """
+    return '\033[34m%s%s' % (str(text), WT)
+
+
+def PR(text):
+    """ Purple """
+    return '\033[35m%s%s' % (str(text), WT)
+
+
+def CY(text):
+    """ Cyan """
+    return '\033[36m%s%s' % (str(text), WT)
+
+
+def GY(text):
+    """ Gray """
+    return '\033[37m%s%s' % (str(text), WT)
+
 URLS = {
     "instagram": "https://www.instagram.com/%s",
     "facebook": "https://www.facebook.com/%s",
@@ -78,7 +116,7 @@ URLS = {
     "skyscanner": "https://www.trip.skyscanner.com/user/%s",
     "ello": "https://ello.co/%s",
     "basecamp": "https://%s.basecamphq.com/login",
-    # request errors:
+    # request ssl errors:
     #"fotolog": "https://fotolog.com/%s",
     #"tracky": "https://tracky.com/user/%s",
     # need to find a different method:
@@ -112,17 +150,33 @@ def get(username, ignore=[]):
 
                 if r.status_code < 500 and r.status_code > 399:
                     results['bad'].append(name)
+                    logger.info(RD('%s[%s][Not Found]: %s'),
+                                name,
+                                BL(str(r.status_code)),
+                                r.url)
 
                 elif name in REGEX:
-                    soup = BeautifulSoup(r.text)
+                    soup = BeautifulSoup(r.text, features="html.parser")
                     sr = soup.find_all(string=re.compile(REGEX[name]))
                     if len(sr):
                         logger.debug(sr)
                         results['bad'].append(name)
+                        logger.info(RD('%s[%s][Not Found]: %s'),
+                                    name,
+                                    BL(str(r.status_code)),
+                                    r.url)
                     else:
                         results['good'].append(name)
+                        logger.info(GR('%s[%s][Found]: %s'),
+                                    name,
+                                    BL(str(r.status_code)),
+                                    r.url)
                 else:
                     results['good'].append(name)
+                    logger.info(GR('%s[%s][Found]: %s'),
+                                name,
+                                BL(str(r.status_code)),
+                                r.url)
 
             except Exception as e:
                 logger.exception(e)
