@@ -90,7 +90,7 @@ REGEX = {
     'ycombinator': '',
     'tripit': '',
     'pastebin': '',
-    'ebay': '': ,
+    'ebay': '',
     'mixcloud': '',
     'steam': ''
 }
