@@ -1,4 +1,4 @@
-# urecon v1.1 - userrecon in python
+# urecon v0.1.1 - userrecon in python
 # Original Author: @linux_choice
 # https://github.com/thelinuxchoice/userrecon
 
