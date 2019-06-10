@@ -5,5 +5,5 @@ import sys
 import pprint
 import logging
 logging.basicConfig()
-urecon.logger.setlevel(logging.DEBUG)
+urecon.logger.setLevel(logging.DEBUG)
 pprint.pprint(urecon.get(sys.argv[1]))
