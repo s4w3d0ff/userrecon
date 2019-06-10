@@ -150,8 +150,8 @@ def get(username, ignore=[]):
 
                 if r.status_code < 500 and r.status_code > 399:
                     results['bad'].append(name)
-                    logger.info(RD('%s[%s][Not Found]: %s'),
-                                name,
+                    logger.info('%s[%s][Not Found]: %s',
+                                RD(name),
                                 BL(str(r.status_code)),
                                 r.url)
 
@@ -161,20 +161,20 @@ def get(username, ignore=[]):
                     if len(sr):
                         logger.debug(sr)
                         results['bad'].append(name)
-                        logger.info(RD('%s[%s][Not Found]: %s'),
-                                    name,
+                        logger.info('%s[%s][Not Found]: %s',
+                                    RD(name),
                                     BL(str(r.status_code)),
                                     r.url)
                     else:
                         results['good'].append(name)
-                        logger.info(GR('%s[%s][Found]: %s'),
-                                    name,
+                        logger.info('%s[%s][Found]: %s',
+                                    GR(name),
                                     BL(str(r.status_code)),
                                     r.url)
                 else:
                     results['good'].append(name)
-                    logger.info(GR('%s[%s][Found]: %s'),
-                                name,
+                    logger.info('%s[%s][Found]: %s',
+                                GR(name),
                                 BL(str(r.status_code)),
                                 r.url)
 
