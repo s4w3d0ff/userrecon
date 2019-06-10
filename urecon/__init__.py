@@ -116,6 +116,7 @@ URLS = {
     "skyscanner": "https://www.trip.skyscanner.com/user/%s",
     "ello": "https://ello.co/%s",
     "basecamp": "https://%s.basecamphq.com/login",
+    "pypi": "https://pypi.org/user/%s"
     # request ssl errors:
     #"fotolog": "https://fotolog.com/%s",
     #"tracky": "https://tracky.com/user/%s",
