@@ -3,5 +3,7 @@
 import urecon
 import sys
 import pprint
-username = sys.argv[1]
-pprint.pprint(get(username))
+import logging
+logging.basicConfig()
+urecon.logger.setlevel(logging.DEBUG)
+pprint.pprint(urecon.get(sys.argv[1]))

@@ -1,6 +1,9 @@
 from requests import Session
 from bs4 import BeautifulSoup
+import re
+import logging
 
+logger = logging.getLogger(__name__)
 _s = Session()
 
 URLS = {
@@ -9,7 +12,7 @@ URLS = {
     "twitter": "https://www.twitter.com/%s",
     "youtube": "https://www.youtube.com/%s",
     "blogspot": "https://%s.blogspot.com",
-    "google": "https://plus.google.com/+%s/posts",
+    #"google": "https://plus.google.com/+%s/posts",
     "reddit": "https://www.reddit.com/user/%s",
     "wordpress": "https://%s.wordpress.com",
     "pinterest": "https://www.pinterest.com/%s",
@@ -48,7 +51,7 @@ URLS = {
     "dribbble": "https://dribbble.com/%s",
     "codecademy": "https://www.codecademy.com/%s",
     "gravatar": "https://en.gravatar.com/%s",
-    "pastebin": "https://pastebin.com/u/%s",
+    #"pastebin": "https://pastebin.com/u/%s",
     "foursquare": "https://foursquare.com/%s",
     "roblox": "https://www.roblox.com/user.aspx?username=%s",
     "gumroad": "https://www.gumroad.com/%s",
@@ -78,21 +81,21 @@ URLS = {
     "skyscanner": "https://www.trip.skyscanner.com/user/%s",
     "ello": "https://ello.co/%s",
     "tracky": "https://tracky.com/user/%s",
-    "tripit": "https://www.tripit.com/people/%s#/profile/basic-info",
+    #"tripit": "https://www.tripit.com/people/%s#/profile/basic-info",
     "basecamp": "https://%s.basecamphq.com/login",
 }
 
 # redirects regex
 REGEX = {
-    'google': '',
-    'wordpress': '',
-    'reddit': '',
-    'ycombinator': '',
-    'tripit': '',
-    'pastebin': '',
-    'ebay': '',
-    'mixcloud': '',
-    'steam': ''
+    'wordpress': "Do you want to register",
+    'reddit': "is either deleted, banned, or doesn't exist",
+    'ycombinator': "No such user.",
+    'ebay': "The User ID you entered was not found.",
+    'mixcloud': "Page Not Found",
+    'steam': "The specified profile could not be found",
+    #'google': '',
+    #'tripit': '',
+    #'pastebin': '',
 }
 
 
@@ -106,15 +109,24 @@ def get(username, ignore=[]):
         if name not in ignore:
             try:
                 r = _s.get(URLS[name] % str(username))
-                print('%s: status_code:%s' % (name, str(r.status_code)))
+
                 if r.status_code < 500 and r.status_code > 399:
                     results['bad'].append(name)
+
+                elif name in REGEX:
+                    soup = BeautifulSoup(r.text)
+                    sr = soup.find_all(string=re.compile(REGEX[name]))
+                    if len(sr):
+                        logger.debug(sr)
+                        results['bad'].append(name)
+                    else:
+                        results['good'].append(name)
                 else:
-                    print(r.url)
                     results['good'].append(name)
+
             except Exception as e:
-                print(e)
+                logger.exception(e)
                 results['error'].append(name)
 
-    print(results)
+    logger.debug(results)
     return results
