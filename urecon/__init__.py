@@ -12,7 +12,6 @@ URLS = {
     "twitter": "https://www.twitter.com/%s",
     "youtube": "https://www.youtube.com/%s",
     "blogspot": "https://%s.blogspot.com",
-    #"google": "https://plus.google.com/+%s/posts",
     "reddit": "https://www.reddit.com/user/%s",
     "wordpress": "https://%s.wordpress.com",
     "pinterest": "https://www.pinterest.com/%s",
@@ -30,7 +29,6 @@ URLS = {
     "imgur": "https://imgur.com/user/%s",
     "flipboard": "https://flipboard.com/@%s",
     "slideshare": "https://slideshare.net/%s",
-    "fotolog": "https://fotolog.com/%s",
     "spotify": "https://open.spotify.com/user/%s",
     "mixcloud": "https://www.mixcloud.com/%s",
     "scribd": "https://www.scribd.com/%s",
@@ -51,7 +49,6 @@ URLS = {
     "dribbble": "https://dribbble.com/%s",
     "codecademy": "https://www.codecademy.com/%s",
     "gravatar": "https://en.gravatar.com/%s",
-    #"pastebin": "https://pastebin.com/u/%s",
     "foursquare": "https://foursquare.com/%s",
     "roblox": "https://www.roblox.com/user.aspx?username=%s",
     "gumroad": "https://www.gumroad.com/%s",
@@ -80,22 +77,25 @@ URLS = {
     "okcupid": "https://www.okcupid.com/profile/%s",
     "skyscanner": "https://www.trip.skyscanner.com/user/%s",
     "ello": "https://ello.co/%s",
-    "tracky": "https://tracky.com/user/%s",
-    #"tripit": "https://www.tripit.com/people/%s#/profile/basic-info",
     "basecamp": "https://%s.basecamphq.com/login",
+    # request errors:
+    #"fotolog": "https://fotolog.com/%s",
+    #"tracky": "https://tracky.com/user/%s",
+    # need to find a different method:
+    #"tripit": "https://www.tripit.com/people/%s#/profile/basic-info",
+    #"pastebin": "https://pastebin.com/u/%s",
+    #"google": "https://plus.google.com/+%s/posts",
+
 }
 
 # redirects regex
 REGEX = {
     'wordpress': "Do you want to register",
-    'reddit': "is either deleted, banned, or doesn't exist",
+    'reddit': "is either deleted, banned, or",
     'ycombinator': "No such user.",
     'ebay': "The User ID you entered was not found.",
     'mixcloud': "Page Not Found",
     'steam': "The specified profile could not be found",
-    #'google': '',
-    #'tripit': '',
-    #'pastebin': '',
 }
 
 
