@@ -16,11 +16,11 @@ install:
 script:
   # test import
   - python -c 'import urecon'
-#deploy:
-#  provider: pypi
-#  user: s4w3d0ff
-#  password:
-#    secure:
-#  on:
-#    tags: true
-#  skip_existing: true
+deploy:
+  provider: pypi
+  user: s4w3d0ff
+  password:
+    secure: "vh/tfrsvfNMx0hMktJ19uFCzv+JDj4xtDQTHhQFL6GqJGNpDg3epsKxvmPsDG7Cs6yw86FxIm2fpwr19OQLWkthLd3zeOxMx8n9ZVs+8pyLTYXyzYJfUM36Kw9fZUmD5dn3w0PKWrUJSHHuMuz1q4u8QW4SZDw5r4okmX3j3AHxxXtDKlEiIr+ZAR5Io5TVFkrYifvpiu7x90MGGHo8OzX+UKq02SVy6vI9K5WK4tEQWjWucSucVXFJbpAHxV5VuEb1K2MVy5OlL6bw2FcjXW2hUZ4HzNtcLiuhgKp7ffpvz30b+Pvy1f+3x+/u9BtpFD23bvjgLTYgJkMir4Frt6JHk4jbwlWWzypHoHKfyyWEiIwjodtuYme8WX12XpyYt8lwYSs2oNz5+7bDmpw5eyZ2LNHtMtzdl/mkQ+HCEuAllHvtnKg1+np7J1mbmfaU02KqC2AKEw+4E4L9wSDw9PfkX8iAGnVnz4CtOjWqhyNWuCEF1s2EFzswA5rcHMn9qM4IvSN9CIEA0WDuXLT4gkTMFI3343rS1y9NjQG/shdi8qjRpepp8+rd+yWvRWoT4HX1JAyeSu8fOa/5brm52M04KHiSbON6agMauE8Q4Pd/E1/c0TduWT3jmfE1Tiwr0lkfVmfUxgnIe46uFIGnjJuc20HCw38lzv/U+cTL87NM="
+  on:
+    tags: true
+  skip_existing: true
