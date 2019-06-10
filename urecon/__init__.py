@@ -181,6 +181,4 @@ def get(username, ignore=[]):
             except Exception as e:
                 logger.exception(e)
                 results['error'].append(name)
-
-    logger.debug(results)
     return results
